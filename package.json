@@ -1,0 +1,17 @@
+{
+  "name": "videoapp",
+  "version": "1.0.0",
+  "description": "This is a backend for an video playing app.",
+  "keywords": [
+    "Javascript",
+    "Backend",
+    "Express"
+  ],
+  "license": "ISC",
+  "author": "Aditya Raj",
+  "type": "module",
+  "main": "Server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
