@@ -1,6 +1,7 @@
 
 import mongoose from "mongoose"
 import jwt from "jsonwebtoken"
+import bcrypt from "bcrypt"
 
 const userSchema = new mongoose.Schema({
 
@@ -50,6 +51,7 @@ const userSchema = new mongoose.Schema({
 
     refreshToken: {
         type: String,
+        select: false,
     }
 
 
@@ -60,7 +62,7 @@ userSchema.pre("save", async function (next) {
     // if we dont write any time any field int he data gets updated and whole models gets save again it will again and again hash the password.
     if (!this.isModified("password")) return next();
     this.password = await bcrypt.hash(this.password, 10)
-    next();
+    next;
 })
 
 /*
@@ -84,7 +86,7 @@ userSchema.methods.generateAccessToken = async function () {
             fullName: this.fullName,
         }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: process.env.ACCESS_TOKEN_EXPIRY }
     )
-}
+} 
 
 userSchema.methods.generateRefreshToken = async function () {
     return jwt.sign({

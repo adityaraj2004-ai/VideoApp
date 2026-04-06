@@ -10,12 +10,15 @@ app.use(cors({
 }))
 app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(cookieParser())
-app.use(express.json({limit: "16kb"}))
+app.use(express.json({ limit: "16kb" }))
 app.use(express.static("public"))
 
 
-app.get("/", (req, res) => {
-    res.send("Hello")
-})
+// import routes
+import authRouter from "./routes/user.routes.js";
+
+// routes decalaration
+// http://localhost:8000/users/register => this is how the routes are working 
+app.use("/api/v1/users", authRouter)  // this is our api and it is its version 1, and it works with users
 
 export default app;

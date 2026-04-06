@@ -1,10 +1,13 @@
-import express from "express";
+
 import dotenv from "dotenv";
+dotenv.config()
+
+import express from "express";
 import { connectDB } from "./db/index.js";
 import mongoose from "mongoose";
 import app from "./App.js";
 
-dotenv.config()
+
 
 const startServer = async()=>{
 try {
